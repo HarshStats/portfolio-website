@@ -1,30 +1,38 @@
-[![Watch tutorial here](https://img.youtube.com/vi/sUKptmUVIBM/0.jpg)](https://youtu.be/sUKptmUVIBM)
+# Portfolio Website
 
-# [Watch video here](https://youtu.be/sUKptmUVIBM)
+Welcome to my personal portfolio website built with Next.js 13, TypeScript, and Tailwind CSS.
 
-## What you will learn
+## 🚀 Features
 
-- Latest Next.js 13 features
-- Next.js App Router
-- Next.js Server Actions
-- Client & Server Components
-- TypeScript (Beginner & Intermediate)
+- Next.js 13 App Router
+- Server & Client Components
+- TypeScript
 - Tailwind CSS
 - Context API
-- Advanced Animations with Framer Motion
-- React.Email & Resend
-- Custom React hooks
-- Fresh, modern UI design
-- Light & Dark mode
-- Responsive website
+- Framer Motion Animations
+- React.Email & Resend Integration
+- Custom React Hooks
+- Light & Dark Mode
+- Responsive Design
 
-## Important
+## 📦 Getting Started
 
-If you want to be a professional developer, you have to know the fundamentals like JavaScript and CSS really well. I highly recommend you go through my [Professional JavaScript](https://bytegrad.com/courses/professional-javascript) and [Professional CSS](https://bytegrad.com/courses/professional-css) courses.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/HarshStats/portfolio-website.git
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Add your `RESEND_API_KEY` to `.env.local`.
+4. Update the recipient email in `send-email.ts`.
 
-I'm close to releasing a complete React & Next.js course. Get on the email list to receive early-bird pricing: [link](https://email.bytegrad.com/).
+## 📧 Contact
 
-## Setup
+Feel free to reach out via the contact form on the website or connect with me on [LinkedIn](https://www.linkedin.com/in/harshweb98/).
 
-1. Add RESEND_API_KEY environment variable in .env.local
-2. In the send-email.ts action file, change the "to" email to your own email
+---
+
+> **Tip:** Make sure you have a solid understanding of JavaScript and CSS fundamentals for the best experience.
+
