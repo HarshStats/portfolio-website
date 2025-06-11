@@ -1,45 +1,72 @@
+"use client";
+
+import { useState } from "react";
 import { projectsData } from "@/lib/data";
+import ProjectCard from "@/components/ProjectCard";
 import Link from "next/link";
 
-const PROJECTS_PER_PAGE = 20;
+const PROJECTS_PER_PAGE = 6;
+
+const FILTERS = [
+  { label: "All Projects", value: "all" },
+  { label: "University Projects", value: "university" },
+  { label: "Deep Learning Projects", value: "deep" },
+  { label: "NLP Projects", value: "nlp" },
+  { label: "Prediction Models Projects", value: "prediction" },
+];
+
+function getProjectCategory(title: string) {
+  if (title.toLowerCase().includes("university")) return "university";
+  if (title.toLowerCase().includes("deep learning")) return "deep";
+  if (title.toLowerCase().includes("nlp")) return "nlp";
+  if (title.toLowerCase().includes("prediction")) return "prediction";
+  return "other";
+}
 
 export default function ProjectsPage({ searchParams }: { searchParams?: { page?: string } }) {
+  const [filter, setFilter] = useState("all");
   const page = Number(searchParams?.page) || 1;
-  const totalPages = Math.ceil(projectsData.length / PROJECTS_PER_PAGE);
+
+  // Filter projects
+  const filteredProjects =
+    filter === "all"
+      ? projectsData
+      : projectsData.filter((p) => getProjectCategory(p.title) === filter);
+
+  const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE);
   const startIdx = (page - 1) * PROJECTS_PER_PAGE;
   const endIdx = startIdx + PROJECTS_PER_PAGE;
-  const projectsToShow = projectsData.slice(startIdx, endIdx);
+  const projectsToShow = filteredProjects.slice(startIdx, endIdx);
 
   return (
-    <main className="max-w-4xl mx-auto py-10 px-4">
+    <main className="max-w-6xl mx-auto py-10 px-4">
       <h1 className="text-3xl font-bold mb-8 text-center">Projects</h1>
-      <div className="grid gap-8">
-        {projectsToShow.map((project, idx) => (
-          <Link
-            key={startIdx + idx}
-            href={`/projects/${startIdx + idx}`}
-            className="block border rounded-lg p-6 shadow bg-white dark:bg-gray-900 hover:shadow-lg transition"
+      {/* Filter Bar */}
+      <div className="flex flex-wrap justify-center gap-4 mb-8">
+        {FILTERS.map((f) => (
+          <button
+            key={f.value}
+            onClick={() => setFilter(f.value)}
+            className={`px-4 py-2 rounded-full border transition ${
+              filter === f.value
+                ? "bg-blue-600 text-white border-blue-600"
+                : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-gray-300 dark:border-gray-700"
+            }`}
           >
-            <h2 className="text-xl font-semibold mb-2">{project.title}</h2>
-            <p className="text-gray-700 dark:text-gray-300 mb-2">{project.description}</p>
-            <div className="flex flex-wrap gap-2 mb-2">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-2 py-1 rounded text-xs"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-            {project.imageUrl && (
-              <img
-                src={typeof project.imageUrl === "string" ? project.imageUrl : project.imageUrl.src}
-                alt={project.title}
-                className="mt-2 rounded w-full max-h-48 object-cover"
-              />
-            )}
-          </Link>
+            {f.label}
+          </button>
+        ))}
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projectsToShow.map((project, idx) => (
+          <ProjectCard
+            key={startIdx + idx}
+            title={project.title}
+            description={project.description}
+            imageUrl={project.imageUrl}
+            githubUrl={project.githubUrl}
+            projectUrl={project.projectUrl}
+          />
         ))}
       </div>
       {/* Pagination Controls */}

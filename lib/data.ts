@@ -60,6 +60,8 @@ export const projectsData = [
       "Check out my University projects, that include various regression, classification, and Bayesian models case studies.",
     tags: ["Python", "R", "SQL", "Machine Learning", "Bayesian Data Analysis"],
     imageUrl: corpcomment,
+    githubUrl: "https://github.com/HarshStats",
+    projectUrl: "https://github.com/HarshStats", // or your live/demo/project link
   },
   {
     title: "5+ Deep Learning Projects",
@@ -67,6 +69,8 @@ export const projectsData = [
       "A collection of deep learning projects, including image classification, object detection, and generative models.",
     tags: ["TensorFlow", "PyTorch", "Neural Networks", "Computer Vision"],
     imageUrl: NN,
+    githubUrl: "https://github.com/HarshStats",
+    projectUrl: "https://github.com/HarshStats",
   },
   {
     title: "5+ NLP Projects", 
@@ -74,6 +78,8 @@ export const projectsData = [
       "A collection of NLP projects, including text classification, sentiment analysis, and named entity recognition.",
     tags: ["Text Classification", "Sentiment Analysis", "Transformer Models", "BERT"],
     imageUrl: NLP,
+    githubUrl: "https://github.com/HarshStats",
+    projectUrl: "https://github.com/HarshStats",
   },
   {
     title: "5+ Prediction Models Projects",
@@ -85,6 +91,8 @@ export const projectsData = [
       "Customer Churn Prediction",
     ],
     imageUrl: Prediction,
+    githubUrl: "https://github.com/HarshStats",
+    projectUrl: "https://github.com/HarshStats",
   },
 ] as const;
 
